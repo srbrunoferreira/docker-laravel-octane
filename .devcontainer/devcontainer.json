@@ -1,26 +1,71 @@
-// https://aka.ms/devcontainer.json
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
 {
-	"name": "Existing Docker Compose (Extend)",
-	"dockerComposeFile": [
-		"../docker-compose.yml"
-	],
-	"service": "laravel.test",
-	"workspaceFolder": "/var/www/html",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				// "mikestead.dotenv",
-				// "amiralizadeh9480.laravel-extra-intellisense",
-				// "ryannaddy.laravel-artisan",
-				// "onecentlin.laravel5-snippets",
-				// "onecentlin.laravel-blade"
-			],
-			"settings": {}
-		}
-	},
-	"remoteUser": "sail",
-	"postCreateCommand": "chown -R 1000:1000 /var/www/html"
-	// "forwardPorts": [],
-	// "runServices": [],
-	// "shutdownAction": "none",
+  "name": "PHP",
+  // https: //github.com/devcontainers/images/tree/main/src/php
+  "image": "mcr.microsoft.com/vscode/devcontainers/php:8.2",
+  "features": {
+    // https://github.com/devcontainers/features/tree/main/src/node
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18.16.1",
+      "nvmVersion": "0.39.3"
+    }
+  },
+  "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "junstyle.php-cs-fixer",
+        "bmewburn.vscode-intelephense-client",
+        "neilbrayfield.php-docblocker",
+        "dbaeumer.vscode-eslint",
+        "aswinkumar863.smarty-template-support",
+        "MehediDracula.php-namespace-resolver",
+        "eamodio.gitlens",
+        "bradlc.vscode-tailwindcss",
+        "onecentlin.laravel-blade",
+        "shufo.vscode-blade-formatter"
+      ],
+      "settings": {
+        "[php]": {
+          "editor.defaultFormatter": "junstyle.php-cs-fixer",
+          "editor.rulers": [
+            80,
+            120
+          ]
+        },
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "editor.formatOnSave": true,
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+        "html.format.wrapAttributes": "force-expand-multiline",
+        "html.format.wrapAttributesIndentSize": 4,
+        "html.format.wrapLineLength": 120,
+        "intelephense.environment.phpVersion": "8.2",
+        "intelephense.files.associations": [
+          "*.php"
+        ],
+        "namespaceResolver.showMessageOnStatusBar": true,
+        "namespaceResolver.sortAlphabetically": true,
+        "namespaceResolver.sortNatural": true,
+        "namespaceResolver.sortOnSave": true,
+        "php-cs-fixer.autoFixByBracket": true,
+        "php-cs-fixer.autoFixBySemicolon": true,
+        "php-cs-fixer.config": ".php-cs-fixer.php",
+        "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+        "php-cs-fixer.formatHtml": true,
+        "php-cs-fixer.onsave": true,
+        "php-docblocker.alignParams": true,
+        "php-docblocker.alignReturn": true,
+        "php-docblocker.useShortNames": true,
+        "php.suggest.basic": false,
+        "php.validate.enable": false,
+        "smarty.highlight": true,
+        "tailwindCSS.includeLanguages": {
+          "blade": "html"
+        }
+      }
+    }
+  }
 }
