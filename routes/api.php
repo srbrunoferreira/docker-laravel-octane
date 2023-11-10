@@ -26,3 +26,12 @@ Route::post('/test', [ApiTokenController::class, 'index']);
 
 Route::get('/postcode/br/{cep}', [PostcodeController::class, 'forBrazil'])->where('cep', '[0-9]{8}');
 Route::get('/postcode/pt/{postcode}', [PostcodeController::class, 'forPortugal'])->where('postcode', '[0-9]{7}');
+
+// Route::middleware(['auth:sanctum'])->group(function (): void {
+Route::post('/tokens', [ApiTokenController::class, 'store']);
+// Route::post('/tokens', function (Request $request) {
+//     $token = $request->user()->createToken($request->token_name);
+
+//     return ['token' => $token->plainTextToken];
+// });
+// });

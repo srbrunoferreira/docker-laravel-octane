@@ -10,3 +10,8 @@ It's recommended to add sail alias to .bashrc:
 Run project: `sail up -d`
 Stop project: `sail stop`
 Remove containers project: `sail down`
+Remove containers project: `sail build`
+
+Octane commands
+- `sail artisan octane:reload`
+- `sail artisan octane:status`

@@ -64,7 +64,7 @@ return (new PhpCsFixer\Config())
         'phpdoc_types' => true,
         'return_type_declaration' => true,
         'short_scalar_cast' => true,
-        'single_blank_line_before_namespace' => true,
+        'single_blank_line_before_namespace' => false,
         'ternary_operator_spaces' => true,
         'trailing_comma_in_multiline' => ['elements' => [], 'after_heredoc' => false],
         'single_trait_insert_per_statement' => true,

@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Cache;
+use App\Models\Token;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 final class ApiTokenController extends Controller
 {
-    public function index()
+    public function store()
     {
-        $users = Cache::remember('email', 5, function () {
-            return User::all();
-        });
+        $token = new Token();
 
-        return $users;
+        $token->createToken(Hash::make(bin2hex(random_bytes(30))));
+
+        $crypt = Crypt::encrypt('hey');
+
+        // It is better to use Sanctum rather then using Hash:: or Crypt::
+
+        return $token;
     }
 }
